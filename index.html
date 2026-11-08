@@ -9,7 +9,11 @@
 <meta property="og:description" content="Working web apps, built fast. See live products you can try today.">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://chrisrneal.github.io/assets/footprint-construction.webp">
+<meta property="og:image:alt" content="The Footprint Construction sign-in page, one of the web apps featured on this site.">
+<meta property="og:url" content="https://chrisrneal.github.io/">
 <meta name="theme-color" content="#1f5c4a">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <style>
 :root{
   --bg:#f7f5f0; --surface:#ffffff; --ink:#1b2420; --muted:#5b665f; --line:#e3dfd5;
@@ -70,6 +74,8 @@ button.btn:disabled{opacity:.6;cursor:wait}
 .status.ok{color:var(--brand)}
 .status.bad{color:#b3261e}
 @media (prefers-color-scheme:dark){.field [aria-invalid="true"]{border-color:#f2b8b5}.field .err,.status.bad{color:#f2b8b5}}
+.about{max-width:42rem}
+.about p{margin:0 0 1rem}
 .alt{margin:0;color:var(--muted)}
 footer{padding:2rem 0 3rem;color:var(--muted);font-size:.9rem}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
@@ -79,7 +85,7 @@ footer{padding:2rem 0 3rem;color:var(--muted);font-size:.9rem}
 <header class="top">
   <div class="wrap">
     <a class="logo" href="#top">Chris Neal</a>
-    <nav aria-label="Primary"><a href="#work">Work</a><a href="#how">How I work</a><a href="#contact">Contact</a></nav>
+    <nav aria-label="Primary"><a href="#work">Work</a><a href="#how">How I work</a><a href="#about">About</a><a href="#contact">Contact</a></nav>
   </div>
 </header>
 
@@ -153,6 +159,17 @@ footer{padding:2rem 0 3rem;color:var(--muted);font-size:.9rem}
         <li><h3>We refine together</h3><p>You tell me what to change. We repeat in short rounds until it fits how your team actually works.</p></li>
         <li><h3>It's yours to run</h3><p>You get a live app you can open from any browser, and a clear explanation of how it all fits together.</p></li>
       </ol>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="wrap">
+      <h2>About</h2>
+      <div class="about">
+        <p>I'm an enterprise architect with more than a decade at large Canadian retailers. I've seen what it takes to keep big systems running, and how often good ideas get buried under process.</p>
+        <p>Now I use AI-assisted development to ship real apps, fast, for people who aren't technical. You describe the problem, I build something you can click through, and we sharpen it together. No jargon, no slide decks.</p>
+        <p>I'm based in Toronto and work with clients across the country.</p>
+      </div>
     </div>
   </section>
 
