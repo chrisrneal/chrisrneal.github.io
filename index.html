@@ -11,6 +11,8 @@
 <meta property="og:image" content="https://chrisrneal.github.io/assets/footprint-construction.webp">
 <meta property="og:image:alt" content="The Footprint Construction sign-in page, one of the web apps featured on this site.">
 <meta property="og:url" content="https://chrisrneal.github.io/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://chrisrneal.github.io/">
 <meta name="theme-color" content="#1f5c4a">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
@@ -30,14 +32,16 @@ a{color:var(--brand)}
 header.top{padding:1rem 0}
 header.top .wrap{display:flex;justify-content:space-between;align-items:center;gap:1rem}
 .logo{font-weight:700;letter-spacing:-.01em;text-decoration:none;color:var(--ink)}
-nav a{margin-left:1.25rem;color:var(--muted);text-decoration:none;font-size:.95rem}
+nav a{display:inline-flex;align-items:center;min-height:44px;padding:0 .4rem;margin-left:.25rem;color:var(--muted);text-decoration:none;font-size:.95rem}
 nav a:hover{color:var(--ink)}
 .hero{padding:clamp(3rem,9vw,6.5rem) 0 clamp(2rem,6vw,4rem)}
 .eyebrow{color:var(--brand);font-weight:600;font-size:.9rem;letter-spacing:.06em;text-transform:uppercase;margin:0 0 1rem}
 h1{font-size:clamp(2.2rem,6vw,4rem);line-height:1.08;letter-spacing:-.025em;margin:0 0 1.25rem;max-width:18ch}
 .lede{font-size:clamp(1.1rem,2.2vw,1.35rem);color:var(--muted);max-width:42rem;margin:0 0 2rem}
 .btn{display:inline-block;padding:.8rem 1.4rem;border-radius:10px;background:var(--brand);color:var(--brand-ink);font-weight:600;text-decoration:none}
-.btn.ghost{background:transparent;color:var(--brand);border:1.5px solid var(--brand);margin-left:.5rem}
+.hero .wrap{display:flex;flex-wrap:wrap;gap:.75rem}
+.hero .wrap>:not(.btn){flex-basis:100%}
+.btn.ghost{background:transparent;color:var(--brand);border:1.5px solid var(--brand)}
 .btn:focus-visible,a:focus-visible{outline:3px solid var(--brand);outline-offset:3px}
 section{padding:clamp(2.5rem,6vw,4.5rem) 0}
 h2{font-size:clamp(1.6rem,3.5vw,2.25rem);letter-spacing:-.02em;margin:0 0 .5rem}
@@ -50,7 +54,7 @@ h2{font-size:clamp(1.6rem,3.5vw,2.25rem);letter-spacing:-.02em;margin:0 0 .5rem}
 .card h3{margin:0;font-size:1.3rem;letter-spacing:-.01em}
 .card p{margin:0;color:var(--muted)}
 .tags{display:flex;flex-wrap:wrap;gap:.4rem;list-style:none;padding:0;margin:0}
-.tags li{background:var(--accent);color:var(--brand);font-size:.8rem;font-weight:600;padding:.2rem .6rem;border-radius:999px}
+.tags li{background:var(--accent);color:var(--brand);font-size:.875rem;font-weight:600;padding:.2rem .6rem;border-radius:999px}
 .links{margin-top:auto;padding-top:.5rem;display:flex;gap:1.25rem;flex-wrap:wrap;font-weight:600}
 .steps{display:grid;gap:1.5rem;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));counter-reset:s;list-style:none;padding:0;margin:0}
 .steps li{counter-increment:s;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:1.4rem}
@@ -109,9 +113,9 @@ footer{padding:2rem 0 3rem;color:var(--muted);font-size:.9rem}
           <img src="assets/footprint-construction.webp" width="1280" height="800" loading="lazy" alt="The Footprint Construction sign-in page, with an option to explore a read-only sample company.">
           <div class="body">
             <h3>Footprint Construction</h3>
-            <p>Construction project and facilities management that keeps operators, general contractors and customers on the same page for every project.</p>
+            <p>Construction project management for operators, GCs and customers that keeps operators, general contractors and customers on the same page for every project.</p>
             <ul class="tags"><li>Next.js</li><li>React</li><li>Postgres</li><li>Supabase</li></ul>
-            <div class="links"><a href="https://app.seefootprint.com" rel="noopener">Try it</a></div>
+            <div class="links"><a href="https://app.seefootprint.com" rel="noopener">Try Footprint Construction</a></div>
           </div>
         </article>
 
@@ -121,7 +125,7 @@ footer{padding:2rem 0 3rem;color:var(--muted);font-size:.9rem}
             <h3>Footprint EA</h3>
             <p>One inventory of your applications, business capabilities and technology, with clear ownership and reporting, so you can see your whole technology footprint.</p>
             <ul class="tags"><li>Next.js</li><li>React</li><li>Postgres</li><li>Supabase</li><li>Tailwind</li></ul>
-            <div class="links"><a href="https://ea-tool.vercel.app" rel="noopener">Try it</a></div>
+            <div class="links"><a href="https://demo.seefootprint.com" rel="noopener">Try Footprint EA</a></div>
           </div>
         </article>
 
@@ -131,7 +135,7 @@ footer{padding:2rem 0 3rem;color:var(--muted);font-size:.9rem}
             <h3>The Long Weekend</h3>
             <p>A three-day alternate-history strategy game. Pick a power, set your focus, and put the phone down: a turn resolves every half hour, whether you're watching or not.</p>
             <ul class="tags"><li>Next.js</li><li>React</li><li>TypeScript</li></ul>
-            <div class="links"><a href="https://dungeoncrawler-eta.vercel.app" rel="noopener">Play</a></div>
+            <div class="links"><a href="https://dungeoncrawler-eta.vercel.app" rel="noopener">Play The Long Weekend</a></div>
           </div>
         </article>
 
@@ -141,7 +145,7 @@ footer{padding:2rem 0 3rem;color:var(--muted);font-size:.9rem}
             <h3>Drift Protocol</h3>
             <p>A solo quiz and social-deduction game: you and seven simulated operators answer the same questions, and three of them are saboteurs. Installable on your phone like an app.</p>
             <ul class="tags"><li>React</li><li>TypeScript</li><li>Vite</li><li>PWA</li></ul>
-            <div class="links"><a href="https://drift-protocol-eight.vercel.app" rel="noopener">Play</a><a href="https://github.com/chrisrneal/drift-protocol" rel="noopener">View the code</a></div>
+            <div class="links"><a href="https://drift-protocol-eight.vercel.app" rel="noopener">Play Drift Protocol</a><a href="https://github.com/chrisrneal/drift-protocol" rel="noopener">View Drift Protocol code</a></div>
           </div>
         </article>
 
@@ -201,7 +205,7 @@ footer{padding:2rem 0 3rem;color:var(--muted);font-size:.9rem}
           <button class="btn" type="submit">Send message</button>
           <p class="status" id="cf-status" role="status" aria-live="polite"></p>
         </form>
-        <p class="alt">Prefer GitHub? <a href="https://github.com/chrisrneal" rel="noopener">Find me on GitHub</a>.</p>
+        <p class="alt" id="cf-soon" hidden>The contact form is coming soon. Please check back shortly.</p>
       </div>
     </div>
   </section>
@@ -226,13 +230,14 @@ footer{padding:2rem 0 3rem;color:var(--muted);font-size:.9rem}
     [form.elements.name,form.elements.email,form.elements.message].forEach(function(f){if(!check(f)&&!first)first=f});
     if(first){first.focus();say('Please fix the highlighted fields.',false);return}
     var url=form.getAttribute('action');
-    if(/TODO/.test(url)){say('The contact form is not set up yet. Please use GitHub below for now.',false);return}
+    if(/TODO/.test(url)){say('The contact form is coming soon. Please check back shortly.',false);return}
     var btn=form.querySelector('button');btn.disabled=true;say('Sending…',true);
     fetch(url,{method:'POST',body:new FormData(form),headers:{Accept:'application/json'}})
       .then(function(r){if(!r.ok)throw 0;form.reset();say("Thanks! Your message was sent. I'll be in touch soon.",true)})
-      .catch(function(){say('Sorry, something went wrong. Please try again, or use GitHub below.',false)})
+      .catch(function(){say('Sorry, something went wrong. Please try again, later.',false)})
       .then(function(){btn.disabled=false});
   });
+  if(/TODO/.test(form.getAttribute('action'))){form.hidden=true;document.getElementById('cf-soon').hidden=false}
   form.addEventListener('input',function(e){if(e.target.getAttribute('aria-invalid')==='true')check(e.target)});
 })();
 </script>
