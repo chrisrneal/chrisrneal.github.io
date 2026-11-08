@@ -54,6 +54,23 @@ h2{font-size:clamp(1.6rem,3.5vw,2.25rem);letter-spacing:-.02em;margin:0 0 .5rem}
 .steps h3{margin:0 0 .4rem;font-size:1.15rem}
 .steps p{margin:0;color:var(--muted)}
 .contact{background:var(--accent);border-radius:20px;padding:clamp(1.5rem,5vw,3rem)}
+.contact form{display:grid;gap:1rem;max-width:36rem;margin:0 0 1.5rem}
+.field{display:grid;gap:.35rem}
+.field label{font-weight:600;font-size:.95rem}
+.field input,.field textarea{width:100%;font:inherit;color:var(--ink);background:var(--surface);border:1.5px solid var(--line);border-radius:10px;padding:.7rem .85rem}
+.field textarea{min-height:8rem;resize:vertical}
+.field input:focus-visible,.field textarea:focus-visible{outline:3px solid var(--brand);outline-offset:2px}
+.field [aria-invalid="true"]{border-color:#b3261e}
+.field .err{color:#b3261e;font-size:.875rem;margin:0}
+.hp{position:absolute;left:-10000px;width:1px;height:1px;overflow:hidden}
+button.btn{border:0;font:inherit;font-weight:600;cursor:pointer;justify-self:start}
+button.btn:disabled{opacity:.6;cursor:wait}
+.status{margin:0;font-weight:600}
+.status:empty{display:none}
+.status.ok{color:var(--brand)}
+.status.bad{color:#b3261e}
+@media (prefers-color-scheme:dark){.field [aria-invalid="true"]{border-color:#f2b8b5}.field .err,.status.bad{color:#f2b8b5}}
+.alt{margin:0;color:var(--muted)}
 footer{padding:2rem 0 3rem;color:var(--muted);font-size:.9rem}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 </style>
@@ -143,9 +160,31 @@ footer{padding:2rem 0 3rem;color:var(--muted);font-size:.9rem}
     <div class="wrap">
       <div class="contact">
         <h2>Let's talk about your project</h2>
-        <p class="sub">Have something you'd like built? Reach out on GitHub and tell me what you're trying to get done.</p>
-        <a class="btn" href="https://github.com/chrisrneal" rel="noopener">Find me on GitHub</a>
-        <!-- TODO: Add Chris's approved contact email. -->
+        <p class="sub">Have something you'd like built? Tell me what you're trying to get done and I'll get back to you.</p>
+        <!-- TODO: replace TODO_FORM_ID with the real Formspree form ID (free plan). This action is the ONE place the endpoint is configured; the JS reads it too. -->
+        <form id="contact-form" action="https://formspree.io/f/TODO_FORM_ID" method="POST" novalidate>
+          <div class="field">
+            <label for="cf-name">Name</label>
+            <input id="cf-name" name="name" type="text" autocomplete="name" required aria-describedby="cf-name-err">
+            <p class="err" id="cf-name-err" hidden></p>
+          </div>
+          <div class="field">
+            <label for="cf-email">Email</label>
+            <input id="cf-email" name="email" type="email" autocomplete="email" required aria-describedby="cf-email-err">
+            <p class="err" id="cf-email-err" hidden></p>
+          </div>
+          <div class="field">
+            <label for="cf-message">Message</label>
+            <textarea id="cf-message" name="message" required aria-describedby="cf-message-err"></textarea>
+            <p class="err" id="cf-message-err" hidden></p>
+          </div>
+          <div class="hp" aria-hidden="true">
+            <label>Leave this field empty <input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label>
+          </div>
+          <button class="btn" type="submit">Send message</button>
+          <p class="status" id="cf-status" role="status" aria-live="polite"></p>
+        </form>
+        <p class="alt">Prefer GitHub? <a href="https://github.com/chrisrneal" rel="noopener">Find me on GitHub</a>.</p>
       </div>
     </div>
   </section>
@@ -155,5 +194,30 @@ footer{padding:2rem 0 3rem;color:var(--muted);font-size:.9rem}
   <div class="wrap">© <span id="yr">2026</span> Chris Neal · Toronto, Canada</div>
 </footer>
 <script>document.getElementById('yr').textContent=new Date().getFullYear()</script>
+<script>
+(function(){
+  var form=document.getElementById('contact-form'),status=document.getElementById('cf-status');
+  var msgs={name:'Please enter your name.',email:'Please enter a valid email address.',message:'Please enter a message.'};
+  function check(el){
+    var err=document.getElementById(el.id+'-err'),bad=!el.value.trim()||!el.checkValidity();
+    el.setAttribute('aria-invalid',bad);err.textContent=bad?msgs[el.name]:'';err.hidden=!bad;return !bad;
+  }
+  function say(t,ok){status.className='status '+(ok?'ok':'bad');status.textContent=t}
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var first=null;
+    [form.elements.name,form.elements.email,form.elements.message].forEach(function(f){if(!check(f)&&!first)first=f});
+    if(first){first.focus();say('Please fix the highlighted fields.',false);return}
+    var url=form.getAttribute('action');
+    if(/TODO/.test(url)){say('The contact form is not set up yet. Please use GitHub below for now.',false);return}
+    var btn=form.querySelector('button');btn.disabled=true;say('Sending…',true);
+    fetch(url,{method:'POST',body:new FormData(form),headers:{Accept:'application/json'}})
+      .then(function(r){if(!r.ok)throw 0;form.reset();say("Thanks! Your message was sent. I'll be in touch soon.",true)})
+      .catch(function(){say('Sorry, something went wrong. Please try again, or use GitHub below.',false)})
+      .then(function(){btn.disabled=false});
+  });
+  form.addEventListener('input',function(e){if(e.target.getAttribute('aria-invalid')==='true')check(e.target)});
+})();
+</script>
 </body>
 </html>
